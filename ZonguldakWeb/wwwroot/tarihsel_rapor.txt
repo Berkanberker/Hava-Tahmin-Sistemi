@@ -1,0 +1,52 @@
+
+TARİHSEL ANALİZ ÖZETİ v10.0 (L2 TRAJECTORY AKTİF)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📅 Tarih: 2025-12-10 16:52
+🎯 En Kritik Gün: 10 December Wednesday (Gün 0)
+
+KAR TAHMİNİ
+─────────────────────────────────────────────────────────────────────────────
+Kar Olasılığı:      %0
+P50 (Medyan):       0.0 cm
+P90 (Kötü senaryo): 0.0 cm
+Belirsizlik:        DÜŞÜK (±0.0 cm)
+
+Tüm analoglar benzer sonuç gösteriyor
+
+7 GÜNLÜK TREND
+─────────────────────────────────────────────────────────────────────────────
+Gün 0 (10 Dec): %0 kar | P50: 0.0cm | Belirsizlik: DÜŞÜK
+Gün 1 (11 Dec): %0 kar | P50: 0.0cm | Belirsizlik: DÜŞÜK
+Gün 2 (12 Dec): %0 kar | P50: 0.0cm | Belirsizlik: DÜŞÜK
+Gün 3 (13 Dec): %0 kar | P50: 0.0cm | Belirsizlik: DÜŞÜK
+Gün 4 (14 Dec): %0 kar | P50: 0.0cm | Belirsizlik: DÜŞÜK
+Gün 5 (15 Dec): %0 kar | P50: 0.0cm | Belirsizlik: DÜŞÜK
+Gün 6 (16 Dec): %0 kar | P50: 0.0cm | Belirsizlik: DÜŞÜK
+Gün 7 (17 Dec): %0 kar | P50: 0.0cm | Belirsizlik: DÜŞÜK
+
+GENEL DEĞERLENDİRME
+─────────────────────────────────────────────────────────────────────────────
+• Analiz edilen gün sayısı: 8
+• Kar olasılığı >%5: 0 gün
+• Maksimum beklenen kar (P90): 0.0 cm
+• Analog sayısı: 50 tarihsel vaka
+
+METODOLOJİ (v10.0) - TÜM SEVİYELER AKTİF
+─────────────────────────────────────────────────────────────────────────────
+✓ L0: Seasonal Preselection (±60 gün)
+✓ L1: Large Scale Pattern Matching (büyük ölçek atmosfer)
+✓ L2: Trajectory Matching (basınç trendi analizi) ✨ YENİ!
+✓ L3: Local Detail Matching (lokal koşullar)
+✓ Probabilistic Ensemble (50 analog)
+✓ Arşiv: 1,592 günlük tarihsel veri
+✓ Trajectory: 1,588 uygun gün
+
+L2 TRAJECTORY MATCHING AÇIKLAMASI:
+L2 seviyesi, atmosfer koşullarının son 2-3 günlük değişim trendini analiz eder.
+Sadece mevcut duruma değil, oraya nasıl gelindiğine de bakar. Bu sayede:
+- Hava sistemlerinin dinamik evrimini yakalar
+- Yüksek/alçak basınç merkezlerinin hareketini izler
+- Kar olaylarının öncesindeki karakteristik pattern'leri bulur
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

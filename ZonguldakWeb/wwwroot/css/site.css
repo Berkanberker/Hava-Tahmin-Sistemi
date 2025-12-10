@@ -1,0 +1,181 @@
+/* --- KIŞ KOMUTA MERKEZİ TEMASI (v2.0 - Gelişmiş Rapor) --- */
+
+:root {
+    /* Renk Paleti */
+    --bg-dark-blue: #0a0e17; /* Derin gece mavisi */
+    --bg-gradient-start: #1a2332;
+    --bg-gradient-end: #0f172a;
+    --accent-cyan: #22d3ee; /* Buz mavisi vurgu */
+    --accent-blue: #3b82f6; /* Elektrik mavisi */
+    --accent-purple: #a855f7; /* Uyarı moru */
+    --glass-bg: rgba(30, 41, 59, 0.75); /* Buzlu cam rengi */
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+}
+
+/* Genel Ayarlar */
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-primary);
+    background-color: var(--bg-dark-blue);
+    overflow-x: hidden;
+}
+
+/* Arka Plan Gradyanı */
+.winter-theme-bg {
+    background: radial-gradient(circle at top left, #1e293b, transparent 40%),
+                radial-gradient(circle at bottom right, #0f172a, transparent 40%),
+                linear-gradient(to bottom, var(--bg-gradient-start), var(--bg-gradient-end));
+    min-height: 100vh;
+}
+
+/* --- Özel Bileşenler --- */
+
+/* 1. Glassmorphism (Buzlu Cam) Kartlar */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    overflow: hidden; /* İçerik taşmasını önle */
+}
+
+.glass-card-header {
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--glass-border);
+    padding: 15px 20px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* 2. Navbar & Footer */
+.glass-navbar {
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    z-index: 1030;
+}
+
+.glass-footer {
+    background: rgba(15, 23, 42, 0.5);
+    backdrop-filter: blur(5px);
+    border-top: 1px solid var(--glass-border);
+}
+
+/* Link Hapları (Navbar için) */
+.nav-pill-link {
+    border-radius: 50px;
+    padding: 8px 20px !important;
+    margin-left: 5px;
+    transition: all 0.3s ease;
+}
+
+.nav-pill-link:hover, .nav-pill-link.active {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--accent-cyan) !important;
+    box-shadow: 0 0 10px rgba(34, 211, 238, 0.3);
+}
+
+/* 3. Butonlar ve Gradyanlar */
+.btn-analiz-dev {
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+    border: none;
+    color: white;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 18px 60px;
+    border-radius: 50px;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5), inset 0 0 0 2px rgba(255,255,255,0.2);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Zıplama efekti */
+}
+
+.btn-analiz-dev:hover {
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 0 0 30px rgba(34, 211, 238, 0.7);
+    color: white;
+}
+
+.bg-gradient-cyan {
+    background: linear-gradient(to right, var(--accent-cyan), var(--accent-blue));
+}
+
+.bg-clip-text {
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+/* 4. MODERN AI RAPOR ALANI (GÜNCELLENDİ) */
+.ai-terminal {
+    /* Daha modern, teknolojik font */
+    font-family: 'Consolas', 'Monaco', 'Andale Mono', monospace;
+    background: rgba(15, 23, 42, 0.6); /* Daha koyu, daha transparan */
+    border: 1px solid rgba(34, 211, 238, 0.15);
+    border-left: 4px solid var(--accent-cyan); /* Sol çizgi cyan olsun */
+    border-radius: 12px;
+    color: #cbd5e1; /* Hafif kırık beyaz (Göz yormaz) */
+    line-height: 1.7; /* Satır arasını açtık */
+    font-size: 1.05rem;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5); /* İç gölge derinlik katar */
+}
+
+/* Başlıklar (BUGÜNÜN DURUMU vb.) */
+.report-header {
+    color: var(--accent-cyan);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border-bottom: 1px solid rgba(34, 211, 238, 0.2);
+    padding-bottom: 5px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+/* Kalın Yazılar (**text**) */
+.report-bold {
+    color: #ffffff; /* Tam beyaz */
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3); /* Hafif parama */
+}
+
+/* Sayılar ve Dereceler (Regex ile yakalayacağız) */
+.report-number {
+    color: #fbbf24; /* Amber/Altın Sarısı */
+    font-weight: 600;
+}
+
+/* Liste Maddeleri (- veya *) */
+.report-bullet {
+    color: var(--accent-blue);
+    margin-right: 8px;
+}
+
+/* Uyarı Mesajları */
+.report-danger {
+    color: #ef4444; /* Kırmızı */
+    font-weight: bold;
+    background: rgba(239, 68, 68, 0.1);
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.report-warning {
+    color: #f59e0b; /* Turuncu */
+    font-weight: bold;
+}
+
+/* 5. Diğerleri */
+.text-cyan { color: var(--accent-cyan) !important; }
+.text-purple { color: var(--accent-purple) !important; }
+.text-muted-light { color: var(--text-secondary) !important; }
+
+/* Yükleniyor Animasyonu */
+.spinner-border.text-cyan {
+    color: var(--accent-cyan) !important;
+    width: 3rem;
+    height: 3rem;
+}

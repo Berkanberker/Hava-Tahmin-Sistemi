@@ -1,0 +1,135 @@
+﻿@{
+    ViewData["Title"] = "Ana Komuta";
+}
+
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+<div class="text-center" style="margin-top: 60px;">
+    <h1 class="display-3 fw-bold mb-3">
+        <span class="bg-gradient-cyan text-transparent bg-clip-text">Zonguldak Kış Avcısı</span>
+    </h1>
+    <p class="lead text-muted-light mb-5" style="letter-spacing: 1px;">
+        Yapay Zeka Destekli Meteorolojik Karar Destek Sistemi <span class="badge glass-card text-cyan border-0">v17.0 PRO</span>
+    </p>
+
+    <form asp-controller="Home" asp-action="AnalizEt" method="post" class="mb-5">
+        <button type="submit" class="btn btn-analiz-dev">
+            🚀 SİSTEMİ TARA VE ANALİZ ET
+        </button>
+    </form>
+
+    <div id="yukleniyor" style="display:none; margin-bottom: 40px;">
+        <div class="d-flex justify-content-center align-items-center flex-column">
+            <div class="spinner-border text-cyan mb-3" role="status"></div>
+            <p class="text-cyan fw-light blink-effect">Uydulara bağlanılıyor... Modeller işleniyor...</p>
+        </div>
+    </div>
+
+    @if (ViewBag.Rapor != null)
+    {
+        @if (ViewBag.BilgiMesaji != null)
+        {
+            <div class="row mb-4 justify-content-center">
+                <div class="col-auto">
+                    <div class="glass-card p-2 px-4 text-cyan fw-bold d-flex align-items-center" style="border-color: var(--accent-cyan);">
+                        <span style="font-size: 1.2rem;">✅</span>
+                        <span class="ms-2">@ViewBag.BilgiMesaji</span>
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div class="row">
+            <div class="col-lg-12 mb-4">
+                <div class="glass-card shadow-lg p-3">
+                    <div class="glass-card-header text-cyan d-flex align-items-center justify-content-between">
+                        <span>📊 Termodinamik Analiz Grafiği (850hPa vs 2m)</span>
+                        <span class="badge bg-danger bg-opacity-25 text-danger">KAR SINIRI: -6°C</span>
+                    </div>
+                    <div class="card-body bg-dark bg-opacity-25">
+                        <div id="chart" style="min-height: 450px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12 mb-4">
+                <div class="glass-card shadow-lg">
+                     <div class="glass-card-header text-purple d-flex align-items-center justify-content-between">
+                        <div><span class="me-2">🤖</span> Yapay Zeka Uzman Raporu</div>
+                        <span class="badge bg-purple bg-opacity-25 text-purple" style="font-size: 0.65rem;">GÜNCEL ANALİZ</span>
+                    </div>
+                    
+                    <div class="card-body p-4 ai-terminal text-start">
+                        @{
+                            var satirlar = ViewBag.Rapor.ToString().Split('\n');
+                            foreach (var hamSatir in satirlar)
+                            {
+                                string satir = hamSatir.Trim();
+                                if (string.IsNullOrWhiteSpace(satir)) continue;
+
+                                if (satir.Contains("BUGÜN") || satir.Contains("GELECEK") || satir.Contains("SONUÇ"))
+                                {
+                                    <div class="report-header">@satir.Replace(":", "")</div>
+                                }
+                                else if (satir.Contains("KIRMIZI ALARM") || satir.Contains("UYARI"))
+                                {
+                                    <div class="mb-2 report-danger">⚠️ @satir</div>
+                                }
+                                else
+                                {
+                                    var islenmis = satir
+                                        .Replace("**", "") 
+                                        .Replace(" C", " <span class='report-number'>°C</span>")
+                                        .Replace(" cm", " <span class='report-number'>cm</span>");
+                                    
+                                    if(satir.StartsWith("-"))
+                                    {
+                                        <div class="d-flex align-items-start mb-2">
+                                            <span class="report-bullet">➤</span>
+                                            <span>@Html.Raw(islenmis.TrimStart('-'))</span>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <p class="mb-2">@Html.Raw(islenmis)</p>
+                                    }
+                                }
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12 mt-2">
+                <div class="glass-card shadow-lg border-warning">
+                     <div class="glass-card-header text-warning d-flex align-items-center">
+                        <span class="me-2">🕰️</span> 44 Yıllık Tarihsel Benzerlik Analizi
+                    </div>
+                    <div class="card-body p-4 ai-terminal text-start" id="tarihsel-alan">
+                        <div class="text-center text-muted-light py-3">
+                            <div class="spinner-border spinner-border-sm text-warning mb-2" role="status"></div>
+                            <p class="mb-0">Dev veri ambarı taranıyor... Geçmişteki benzer kışlar bulunuyor...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<!-- ============================================ -->
+<!-- BURASI ÖNEMLİ: JavaScript dosyaları EN SONA -->
+<!-- ============================================ -->
+
+<script src="~/js/weather-dashboard.js"></script>
+
+@if (ViewBag.GrafikVerisi != null)
+{
+    <script>
+        // Grafik verilerini gönder
+        grafikCiz(@Html.Raw(ViewBag.GrafikVerisi));
+        
+        // Tarihsel analizi yükle
+        tarihselAnalizYukle();
+    </script>
+}

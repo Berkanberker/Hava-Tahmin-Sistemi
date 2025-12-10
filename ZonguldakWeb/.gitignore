@@ -1,0 +1,19 @@
+# .NET Çıktıları
+[Dd]ebug/
+[Rr]elease/
+**/bin/
+**/obj/
+
+# Python Sanal Ortamı (CRITICAL)
+.venv/
+venv/
+env/
+
+# Veritabanı ve Cache Dosyaları
+app.db
+*.cache
+
+# Loglar ve Raporlar
+*.log
+wwwroot/rapor.txt
+wwwroot/tarihsel_rapor.txt

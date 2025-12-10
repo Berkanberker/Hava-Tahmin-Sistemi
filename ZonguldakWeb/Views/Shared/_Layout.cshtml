@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="tr" data-bs-theme="dark">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Zonguldak Kış Avcısı</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body class="winter-theme-bg">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-dark fixed-top glass-navbar mx-3 mt-3 rounded-pill p-2 shadow-sm">
+            <div class="container-fluid">
+                <a class="navbar-brand fw-bold d-flex align-items-center" asp-controller="Home" asp-action="Index">
+                    <span style="font-size: 1.5rem;">🌪️</span> 
+                    <span class="ms-2 bg-gradient-cyan text-transparent bg-clip-text">Zonguldak Kış Avcısı</span>
+                </a>
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
+                    <ul class="navbar-nav">
+                        <li class="nav-item me-2">
+                            <a class="nav-link nav-pill-link active" asp-controller="Home" asp-action="Index">🏠 Ana Komuta</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-pill-link" asp-controller="Home" asp-action="Gecmis">📂 Arşiv Kayıtları</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container main-content-container" style="margin-top: 100px;">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="glass-footer text-center text-muted p-3 mt-5 fw-light" style="font-size: 0.9rem;">
+        <div class="container">
+            &copy; 2025 - Zonguldak AI Kış Sistemleri Avcısı - <span class="text-cyan">v14.2 Profesyonel Sürüm</span>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
